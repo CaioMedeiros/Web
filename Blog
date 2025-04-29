@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>FGC-CE</title>
+  <style>
+    /* Estilos gerais */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #222;
+      color: #fff;
+      padding: 20px;
+    }
+
+    header h1 {
+      text-align: center;
+    }
+
+    nav {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 16px;
+      background-color: #444;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #666;
+    }
+
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    article {
+      flex: 2;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    article img {
+      max-width: 100%;
+      height: auto;
+      margin: 15px 0;
+      border-radius: 5px;
+    }
+
+    aside {
+      flex: 1;
+      background-color: #f1f1f1;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    aside h3 {
+      margin-bottom: 10px;
+    }
+
+    aside a {
+      display: block;
+      color: #007BFF;
+      text-decoration: none;
+      margin-bottom: 10px;
+      transition: color 0.3s;
+    }
+
+    aside a:hover {
+      color: #0056b3;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #222;
+      color: #fff;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      main {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>FGC-CE</h1>
+    <nav>
+      <a href="#">Início</a>
+      <a href="#">Notícias</a>
+      <a href="#">Eventos</a>
+      <a href="#">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <h2>Brasileiro é segundo lugar em campeonato mundial</h2>
+      <p><strong>Data:</strong> 29/04/2025</p>
+      <img src="https://liquipedia.net/commons/images/thumb/7/74/Rang13_BC_2022.jpg/600px-Rang13_BC_2022.jpg" alt="Rang13 no campeonato">
+      <p>
+        O brasileiro Raphaell "Rang13" Alves, jogador pela equipe PHT, dominante na cena brasileira de Guilty Gear Strive, com dezenas de títulos em torneios quinzenais online organizados por ZateFGC e grande campeão de torneios offline como o Ultra Hard, Heaven or Hell, TRETA Championship e Battle Coliseum ficou em segundo lugar no mundial de Guilty Gear Strive, campeonato realizado pela empresa dona do jogo Arc System Works!
+      </p>
+      <p>
+        Provando que mesmo com as dificuldades de visto, investimento e linguísticas os brasileiros têm um potencial incontestável quanto ao FGC.
+      </p>
+    </article>
+
+    <aside>
+      <h3>Mais do Rang13</h3>
+      <a href="https://br.ign.com/esports/123209/news/rang13-se-torna-primeiro-brasileiro-da-historia-a-chegar-ao-top-8-da-evo-japao" target="_blank">
+        Rang13 entra para história no EVO Japão
+      </a>
+    </aside>
+  </main>
+
+  <footer>
+    &copy; 2025 FGC-CE. Todos os direitos reservados.
+  </footer>
+
+</body>
+</html>
