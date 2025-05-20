@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Guilty Gear Strive - Blog</title>
+    <style>
+        /* Reset e base */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #fff;
+            color: #111;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Modo escuro */
+        body.dark-mode {
+            background-color: #111;
+            color: #eee;
+        }
+
+        /* Cabeçalho principal */
+        header {
+            padding: 40px;
+            text-align: center;
+            background: #900;
+            /* vermelho escuro */
+            color: white;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        /* Botão de modo escuro */
+        .dark-toggle {
+            margin-top: 10px;
+            background: black;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Navbar sticky */
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: black;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #900;
+        }
+
+        /* Container com Flexbox */
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        /* Coluna lateral */
+        aside {
+            flex: 30%;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        body.dark-mode aside {
+            background-color: #222;
+        }
+
+        /* Conteúdo principal */
+        section {
+            flex: 70%;
+            background-color: white;
+            padding: 20px;
+        }
+
+        body.dark-mode section {
+            background-color: #181818;
+        }
+
+        /* Rodapé */
+        footer {
+            padding: 20px;
+            text-align: center;
+            background: #333;
+            color: white;
+        }
+
+        /* Responsividade */
+        @media screen and (max-width: 700px) {
+            main {
+                flex-direction: column;
+            }
+
+            nav {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <h1>Guilty Gear Strive - Blog</h1>
+        <p>Notícias, campeonatos e destaques da cena FGC!</p>
+        <!-- Botão para alternar modo escuro -->
+        <button class="dark-toggle" onclick="document.body.classList.toggle('dark-mode')">
+            Alternar modo escuro
+        </button>
+    </header>
+
+    <!-- Navegação principal -->
+    <nav>
+        <a href="#">Início</a>
+        <a href="#">Notícias</a>
+        <a href="#">Personagens</a>
+        <a href="#">Campeonatos</a>
+    </nav>
+
+    <!-- Conteúdo principal -->
+    <main>
+
+        <!-- Coluna lateral -->
+        <aside>
+            <h2>Sobre o Blog</h2>
+            <p>Este blog traz tudo sobre o universo de Guilty Gear Strive: estratégias, jogadores, eventos e muito mais.
+            </p>
+
+            <h3>Galeria</h3>
+
+            <!-- Imagem da Baiken -->
+            <img src="https://esports.gg/_next/image/?url=https%3A%2F%2Fadmin.esports.gg%2Fwp-content%2Fuploads%2F2022%2F01%2Fchrome_DDorbNi9dQ-1-1024x536.jpg&w=3840&q=75"
+                alt="Baiken Guilty Gear" style="width:100%; border-radius:8px; margin-bottom: 10px;">
+
+            <!-- Imagem do Sol Badguy -->
+            <img src="https://th.bing.com/th/id/OIP.l698DwWcj_FfVD8GlK_-GgHaKe?rs=1&pid=ImgDetMain"
+                alt="Sol Badguy Guilty Gear" style="width:100%; border-radius:8px; margin-bottom: 10px;">
+
+            <!-- Imagem do Nagoriyuki -->
+            <img src="https://imgix.ranker.com/user_node_img/4373/87453232/original/87453232-photo-u-1204732351?auto=format&q=60&fit=crop&fm=pjpg&dpr=2&w=650"
+                alt="Nagoriyuki Guilty Gear" style="width:100%; border-radius:8px; margin-bottom: 10px;">
+
+            <!-- Imagem da Giovanna -->
+            <img src="https://th.bing.com/th/id/OIP.3wc3bsNus8tsYc64yMo_qwHaKd?rs=1&pid=ImgDetMain"
+                alt="Giovanna Guilty Gear" style="width:100%; border-radius:8px; margin-bottom: 10px;">
+        </aside>
+
+        <!-- Seção principal com artigos -->
+        <section>
+            <article>
+                <h2>Final Mundial Guilty Gear Strive</h2>
+                <h5>Publicado em 20/05/2025</h5>
+                <img src="https://th.bing.com/th/id/OIP.xOQsrZgnLLk_p4wcrseiowHaEK?rs=1&pid=ImgDetMain" style="height:400px;"
+                    alt="Imagem do patch notes"> </br>
+                <a href="https://www.arcsystemworks.jp/awt2024/" target="_blank" style="color: red; font-weight: bold;">
+                    Acessar site do campeonato
+                </a>
+                <p>O brasileiro Rang13 ficou em 2º lugar no mundial, enfrentando os melhores do mundo!</p>
+                <p>Com uma performance impecável usando seu main Chipp, ele conquistou o coração da comunidade e provou
+                    o talento nacional na cena FGC internacional.</p>
+            </article>
+            <br>
+            <article>
+                <h2>Atualização 1.38 - Novo Balanceamento!</h2>
+                <h5>Publicado em 20/05/2025</h5>
+                <img src="https://www.guiltygear.com/ggst/en/wordpress/wp-content/themes/ggst/img/news/default.jpg" style="height:400px;"
+                    alt="Imagem do patch notes"> </br>
+                <a href="https://www.guiltygear.com/ggst/en/news/post-2266/" target="_blank" style="color: red; font-weight: bold;">
+                    Acessar Patch Notes 1.38
+                </a>
+                <p>O patch 1.38 trouxe mudanças significativas para o balanceamento do jogo, visando melhorar a
+                    competitividade e a diversidade de personagens.</p>
+                <p>A nova atualização trouxe mudanças importantes para personagens como Happy Chaos, Ramlethal e May.
+                </p>
+                <p>Confira como essas mudanças podem impactar o meta atual e prepare-se para novos desafios no campo de
+                    batalha!</p>
+            </article>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2025 Guilty Gear Strive Blog - Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+
+</html>
