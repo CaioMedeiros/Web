@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <title>Pokédex</title>
+        <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    img {
+      width: 200px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #4caf50;
+      color: white;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  </style>
+    </head>
+    <body>
+
+        <img id="pokemon-img"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
+            alt="Pokémon">
+
+        <div class="buttons">
+            <button id="back-btn">Voltar -1</button>
+            <button id="next-btn">Adiantar +1</button>
+        </div>
+
+        <script>
+    const img = document.getElementById('pokemon-img');
+    const backBtn = document.getElementById('back-btn');
+    const nextBtn = document.getElementById('next-btn');
+
+    let currentId = 1;
+
+    function updateImage() {
+      img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${currentId}.svg`;
+    }
+
+    backBtn.addEventListener('click', () => {
+      if (currentId > 1) {
+        currentId--;
+        updateImage();
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentId < 100) {
+        currentId++;
+        updateImage();
+      }
+    });
+  </script>
+
+    </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Notificação</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        /* Card */
+        .notification-card {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 250px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            padding: 16px;
+            z-index: 9999;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .card-content h3 {
+            margin: 0 0 8px;
+        }
+
+        .card-content p {
+            margin: 0;
+        }
+
+        .content {
+            height: 2000px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="content">
+        <h1>Página com Notificação</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut
+            perspiciatis unde omnis iste natus error sit voluptatem
+            accusantium doloremque laudantium...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Para fazer miojo, siga estes passos simples:</p>
+        <p>Ferva água: Coloque uma panela com água para ferver.</p>
+        <p>Adicione o miojo: Quando a água estiver fervendo, adicione o macarrão e o tempero que vem no pacote.</p>
+        <p>Cozinhe: Cozinhe por cerca de 3 minutos, mexendo ocasionalmente para não grudar.</p>
+        <p>Sirva: Após o tempo de cozimento, sirva o miojo em um prato e, se desejar, adicione ingredientes como queijo ralado ou requeijão para dar mais sabor. </p>
+
+Essa receita é rápida e fácil, perfeita para uma refeição simples!...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+    </div>
+
+    <!-- Card -->
+    <div class="notification-card" id="notification">
+        <div class="card-header">
+            <button class="close-btn" onclick="document.getElementById('notification').style.display='none'">X</button>
+        </div>
+        <div class="card-content">
+            <h3>Novidade!</h3>
+            <p>Confira nossos novos produtos.</p>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <title>Guilty Gear Strive</title>
+        <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: red;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      flex: 1;
+      flex-direction: row;
+    }
+
+    nav {
+      background-color: black;
+      color: white;
+      width: 30%;
+      padding: 20px;
+    }
+
+    nav ul {
+      list-style: none;
+    }
+
+    nav li {
+      margin-bottom: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      width: 70%;
+      background: linear-gradient(to bottom, yellow 0%, white 100%);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    section {
+      background-color: #eee;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    section h2 {
+      margin-bottom: 10px;
+    }
+
+    section img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    footer {
+      background-color: red;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+    @media (max-width: 400px) {
+      .container {
+        flex-direction: column;
+      }
+
+      nav, main {
+        width: 100%;
+      }
+    }
+  </style>
+    </head>
+    <body>
+
+        <header>
+            <h1>Guilty Gear Strive - Personagens</h1>
+        </header>
+
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a
+                            href="https://www.guiltygear.com/ggst/en/character/sol/"
+                            target="_blank">Sol Badguy</a></li>
+                    <li><a
+                            href="https://www.guiltygear.com/ggst/en/character/kyk/"
+                            target="_blank">Ky Kiske</a></li>
+                    <li><a
+                            href="https://www.guiltygear.com/ggst/en/character/may/"
+                            target="_blank">May</a></li>
+                    <li><a
+                            href="https://www.guiltygear.com/ggst/en/character/chp/"
+                            target="_blank">Chipp Zanuff</a></li>
+                    <li><a
+                            href="https://www.guiltygear.com/ggst/en/character/mll/"
+                            target="_blank">Millia Rage</a></li>
+                </ul>
+            </nav>
+
+            <main>
+                <section>
+                    <h2>Slayer</h2>
+                    <img
+                        src="https://www.guiltygear.com/ggst/en/wordpress/wp-content/uploads/2024/04/chara_pc_4tg8hdo2.webp"
+                        alt="Slayer">
+                </section>
+                <section>
+                    <h2>Dizzy</h2>
+                    <img
+                        src="https://www.guiltygear.com/ggst/en/wordpress/wp-content/uploads/2018/10/chara_pc-ny040fsi2.webp"
+                        alt="Dizzy">
+                </section>
+                <section>
+                    <h2>A.B.A</h2>
+                    <img
+                        src="https://www.guiltygear.com/ggst/en/wordpress/wp-content/uploads/2019/02/chara_aba_pc.webp"
+                        alt="A.B.A">
+                </section>
+            </main>
+        </div>
+
+        <footer>
+            <p>Guilty Gear Strive &copy; 2025 - Arc System Works</p>
+        </footer>
+
+    </body>
+</html>
