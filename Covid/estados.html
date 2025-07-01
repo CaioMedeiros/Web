@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>COVID-19 Brasil – Estados</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    table { border-collapse: collapse; width: 100%; max-width: 800px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+    th { background-color: #f0f0f0; }
+    tr.destacar { background-color: #ffe5e5; }
+    tfoot td { font-weight: bold; }
+    .info { margin-top: 20px; font-style: italic; }
+  </style>
+</head>
+<body>
+  <h1>COVID‑19 Brasil – Estados</h1>
+  <table id="tbl-estados">
+    <thead>
+      <tr>
+        <th>Estado</th>
+        <th>UF</th>
+        <th>Casos</th>
+        <th>Suspeitos</th>
+        <th>Falecimentos</th>
+        <th>Relação<br>(Casos/Falec)</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2">Médias</td>
+        <td id="media-casos"></td>
+        <td id="media-suspeitos"></td>
+        <td id="media-falec"></td>
+        <td></td>
+      </tr>
+    </tfoot>
+  </table>
+  <div class="info" id="mais-alta"></div>
+  <div class="info" id="mais-baixa"></div>
+
+  <script>
+    async function carregarDados() {
+      const url = 'https://covid19-brazil-api.vercel.app/api/report/v1';
+      const resp = await fetch(url);
+      const data = await resp.json();
+      const estados = data.data;
+
+      const tbody = document.querySelector('#tbl-estados tbody');
+      let totalCasos = 0, totalSus = 0, totalFal = 0;
+      const arrRela = [];
+
+      estados.forEach(e => {
+        const rel = e.cases / (e.deaths || 1);
+        totalCasos += e.cases;
+        totalSus += e.suspects;
+        totalFal += e.deaths;
+        arrRela.push({ uf: e.uf, nome: e.state, rel, casos: e.cases, fal: e.deaths, sus: e.suspects });
+      });
+
+      const mediaCas = totalCasos / estados.length;
+      const mediaSus = totalSus / estados.length;
+      const mediaFal = totalFal / estados.length;
+
+      arrRela.forEach(e => {
+        const tr = document.createElement('tr');
+        if (e.fal > mediaFal) tr.classList.add('destacar');
+        tr.innerHTML = `
+          <td>${e.nome}</td>
+          <td>${e.uf}</td>
+          <td>${e.casos.toLocaleString()}</td>
+          <td>${e.sus.toLocaleString()}</td>
+          <td>${e.fal.toLocaleString()}</td>
+          <td>${e.rel.toFixed(2)}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      document.getElementById('media-casos').textContent = mediaCas.toFixed(2);
+      document.getElementById('media-suspeitos').textContent = mediaSus.toFixed(2);
+      document.getElementById('media-falec').textContent = mediaFal.toFixed(2);
+
+      const ordenado = arrRela.slice().sort((a,b)=>b.rel - a.rel);
+      const maior = ordenado[0];
+      const menor = ordenado[ordenado.length - 1];
+
+      document.getElementById('mais-alta').textContent =
+        `➡️ Maior relação Casos/Falecimentos: ${maior.nome} (${maior.uf}) — ${maior.rel.toFixed(2)}`;
+      document.getElementById('mais-baixa').textContent =
+        `➡️ Menor relação Casos/Falecimentos: ${menor.nome} (${menor.uf}) — ${menor.rel.toFixed(2)}`;
+    }
+
+    carregarDados();
+  </script>
+</body>
+</html>

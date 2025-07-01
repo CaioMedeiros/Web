@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>COVID‑19 Mundo – Países</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    table { border-collapse: collapse; width: 100%; max-width: 900px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+    th { background-color: #f0f0f0; }
+    tr#brasil { background-color: #d0e6ff; }
+  </style>
+</head>
+<body>
+  <h1>COVID‑19 Mundo – Países</h1>
+  <table id="tbl-paises">
+    <thead>
+      <tr>
+        <th>País</th>
+        <th>Casos Confirmados</th>
+        <th>Mortes</th>
+        <th>Casos Ativos</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    async function carregarPaises() {
+      const resp = await fetch('https://disease.sh/v3/covid-19/countries');
+      const lista = await resp.json();
+
+      const tbody = document.querySelector('#tbl-paises tbody');
+
+      lista.forEach(p => {
+        const tr = document.createElement('tr');
+        if (p.country === 'Brazil') tr.id = 'brasil';
+
+        tr.innerHTML = `
+          <td>${p.country}</td>
+          <td>${p.cases.toLocaleString()}</td>
+          <td>${p.deaths.toLocaleString()}</td>
+          <td>${p.active.toLocaleString()}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    carregarPaises();
+  </script>
+</body>
+</html>
