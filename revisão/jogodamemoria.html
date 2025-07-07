@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jogo da Memória</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+      background-color: #f2f2f2;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    #tabuleiro {
+      display: grid;
+      grid-template-columns: repeat(4, 100px);
+      grid-gap: 10px;
+    }
+
+    .carta {
+      width: 100px;
+      height: 100px;
+      background-color: #444;
+      color: transparent;
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      cursor: pointer;
+      user-select: none;
+      transition: 0.3s;
+    }
+
+    .carta.revelada {
+      background-color: #fff;
+      color: black;
+    }
+
+    .carta.acertou {
+      background-color: lightgreen;
+      cursor: default;
+    }
+  </style>
+</head>
+<body>
+  <h1>Jogo da Memória</h1>
+  <div id="tabuleiro"></div>
+  <p>Pontos: <span id="pontos">0</span></p>
+
+  <script>
+    const emojis = ['🍕', '🍔', '🍟', '🌮', '🍣', '🍩', '🍉', '🍓'];
+    let cartas = [...emojis, ...emojis]; // duas de cada
+    cartas = cartas.sort(() => 0.5 - Math.random()); // embaralhar
+
+    const tabuleiro = document.getElementById('tabuleiro');
+    let selecionadas = [];
+    let bloqueado = false;
+    let pontos = 0;
+
+    cartas.forEach((emoji, i) => {
+      const carta = document.createElement('div');
+      carta.className = 'carta';
+      carta.dataset.emoji = emoji;
+      carta.dataset.index = i;
+      carta.textContent = emoji;
+
+      carta.addEventListener('click', () => {
+        if (carta.classList.contains('revelada') || carta.classList.contains('acertou') || bloqueado) return;
+
+        carta.classList.add('revelada');
+        selecionadas.push(carta);
+
+        if (selecionadas.length === 2) {
+          bloqueado = true;
+
+          const [c1, c2] = selecionadas;
+          if (c1.dataset.emoji === c2.dataset.emoji) {
+            c1.classList.add('acertou');
+            c2.classList.add('acertou');
+            pontos++;
+            document.getElementById("pontos").textContent = pontos;
+            selecionadas = [];
+            bloqueado = false;
+
+            if (document.querySelectorAll(".carta.acertou").length === 16) {
+              alert("Parabéns! Você completou o jogo.");
+            }
+          } else {
+            setTimeout(() => {
+              c1.classList.remove('revelada');
+              c2.classList.remove('revelada');
+              selecionadas = [];
+              bloqueado = false;
+            }, 1000);
+          }
+        }
+      });
+
+      tabuleiro.appendChild(carta);
+    });
+  </script>
+</body>
+</html>

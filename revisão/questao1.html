@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Questão 01 - Produtos com Promessa</title>
+  <style>
+    body { font-family: Arial; margin: 20px; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+    th { background-color: #f0f0f0; }
+    .acima-media { background-color: #e0f7fa; }
+    .mais-caro { background-color: #ffe082; }
+    .mais-barato { background-color: #c8e6c9; }
+    .erro { color: red; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Lista de Produtos</h1>
+  <div id="resultado"></div>
+
+  <script>
+    function gerarProdutosAsync() {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          const numero = Math.floor(Math.random() * 100);
+
+          if (numero % 2 === 0) {
+            const produtos = Array.from({ length: 10 }, (_, i) => ({
+              id: i + 1,
+              nome: `Produto ${i + 1}`,
+              tipo: i % 2 === 0 ? "Eletrônico" : "Vestuário",
+              preco: parseFloat((Math.random() * 100 + 10).toFixed(2))
+            }));
+            resolve(produtos);
+          } else {
+            reject({ res: "ERROR", msg: "ERRO NO SISTEMA" });
+          }
+        }, 4000);
+      });
+    }
+
+    async function carregarProdutos() {
+      const container = document.getElementById("resultado");
+      try {
+        const produtos = await gerarProdutosAsync();
+
+        let total = 0;
+        let maisCaro = produtos[0];
+        let maisBarato = produtos[0];
+
+        produtos.forEach(p => {
+          total += p.preco;
+          if (p.preco > maisCaro.preco) maisCaro = p;
+          if (p.preco < maisBarato.preco) maisBarato = p;
+        });
+
+        const media = total / produtos.length;
+
+        let html = `<table><thead><tr><th>ID</th><th>Nome</th><th>Tipo</th><th>Preço</th></tr></thead><tbody>`;
+
+        produtos.forEach(p => {
+          let classe = "";
+          if (p.preco > media) classe = "acima-media";
+          if (p.id === maisCaro.id) classe = "mais-caro";
+          if (p.id === maisBarato.id) classe = "mais-barato";
+
+          html += `<tr class="${classe}"><td>${p.id}</td><td>${p.nome}</td><td>${p.tipo}</td><td>R$ ${p.preco.toFixed(2)}</td></tr>`;
+        });
+
+        html += `</tbody></table>`;
+        html += `<p><strong>Média dos preços:</strong> R$ ${media.toFixed(2)}</p>`;
+
+        container.innerHTML = html;
+      } catch (erro) {
+        container.innerHTML = `<p class="erro">${erro.msg}</p>`;
+      }
+    }
+
+    carregarProdutos();
+  </script>
+</body>
+</html>
